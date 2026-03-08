@@ -204,33 +204,33 @@ function StepNode({ step, active }) {
     <div style={{
       display: "flex",
       alignItems: "stretch",
-      gap: 12,
+      gap: 14,
       opacity: active ? 1 : 0.25,
       transition: "all 0.3s ease",
     }}>
       {/* Icon + line */}
       <div style={{ display:"flex", flexDirection:"column", alignItems:"center", flexShrink:0 }}>
         <div style={{
-          width: 32, height: 32,
-          borderRadius: 4,
+          width: 38, height: 38,
+          borderRadius: 6,
           border: `2px solid ${active ? step.color : T.border2}`,
           background: active ? step.color+"18" : "transparent",
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 13, color: active ? step.color : T.dimmer,
+          fontSize: 15, color: active ? step.color : T.dimmer,
           transition: "all 0.3s",
-          boxShadow: active ? `0 0 16px ${step.color}33` : "none",
+          boxShadow: active ? `0 0 18px ${step.color}33` : "none",
           fontFamily: "monospace",
         }}>
           {step.icon}
         </div>
         {!step.final && (
-          <div style={{ width: 2, flex: 1, minHeight: 16, background: active ? step.color+"44" : T.border, marginTop: 3 }} />
+          <div style={{ width: 2, flex: 1, minHeight: 18, background: active ? step.color+"55" : T.border, marginTop: 4 }} />
         )}
       </div>
       {/* Text */}
-      <div style={{ paddingBottom: step.final ? 0 : 20, paddingTop: 4 }}>
+      <div style={{ paddingBottom: step.final ? 0 : 24, paddingTop: 6 }}>
         <div style={{
-          fontSize: 10, fontWeight: 800,
+          fontSize: 11, fontWeight: 800,
           letterSpacing: "2px",
           color: active ? step.color : T.dimmer,
           fontFamily: "'Space Grotesk', sans-serif",
@@ -239,7 +239,7 @@ function StepNode({ step, active }) {
         }}>
           {step.label}
         </div>
-        <div style={{ fontSize: 11, color: active ? T.dim : T.dimmer, marginTop: 4, lineHeight: 1.5, fontFamily: "monospace" }}>
+        <div style={{ fontSize: 12, color: active ? T.dim : T.dimmer, marginTop: 5, lineHeight: 1.5, fontFamily: "monospace" }}>
           {step.detail}
         </div>
       </div>
@@ -399,7 +399,7 @@ export default function App() {
 
         {/* ── LEFT SIDEBAR ─────────────────────────────────────────────────── */}
         <div style={{
-          width: 300, flexShrink: 0,
+          width: 380, flexShrink: 0,
           borderRight: `1px solid ${T.border}`,
           display: "flex", flexDirection: "column",
           background: T.surface, overflow: "hidden",
@@ -470,7 +470,7 @@ export default function App() {
                       caretColor: T.yellow,
                       lineHeight: 1.65,
                       padding: "12px 12px",
-                      minHeight: 80,
+                      minHeight: 100,
                       zIndex: 2,
                     }}
                   />
@@ -493,25 +493,26 @@ export default function App() {
           </div>
 
           {/* Schema */}
-          <div style={{ padding: 16, borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
+          <div style={{ padding: "14px 16px", borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
             <Label>Schema</Label>
             {Object.entries(DB).map(([tbl, rows]) => (
-              <div key={tbl} style={{ marginBottom: 10 }}>
-                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom: 5 }}>
-                  <span style={{ fontSize: 11, color: T.yellow, fontWeight: 700, fontFamily:"'Space Grotesk',sans-serif" }}>
+              <div key={tbl} style={{ marginBottom: 12 }}>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom: 6 }}>
+                  <span style={{ fontSize: 12, color: T.yellow, fontWeight: 700, fontFamily:"'Space Grotesk',sans-serif", letterSpacing:"0.5px" }}>
                     ▣ {tbl}
                   </span>
                   <span style={{ fontSize: 10, color: T.dimmer, fontFamily:"monospace" }}>{rows.length} rows</span>
                 </div>
-                <div style={{ display:"flex", flexWrap:"wrap", gap: 4, paddingLeft: 14 }}>
+                <div style={{ display:"flex", flexWrap:"wrap", gap: 5 }}>
                   {Object.keys(rows[0]).map(col => (
                     <span key={col} style={{
-                      fontSize: 10, color: T.dim,
+                      fontSize: 11, color: T.dim,
                       background: T.bg,
                       border: `1px solid ${T.border2}`,
-                      borderRadius: 2,
-                      padding: "1px 6px",
+                      borderRadius: 3,
+                      padding: "2px 8px",
                       fontFamily: "monospace",
+                      lineHeight: 1.6,
                     }}>{col}</span>
                   ))}
                 </div>
